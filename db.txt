@@ -1,0 +1,27 @@
+
+
+create DATABASE KTOmega;
+
+use KTOmega;
+
+create table clientes(
+ idCliente int(11) NOT NULL AUTO_INCREMENT,
+ identificador varchar(20) NOT NULL,
+ nombre varchar(80) NOT NULL,
+ direccion varchar(300) NOT NULL,
+ contacto varchar(100) NOT NULL,
+ telefono varchar(20) NOT NULL,
+ estado int(11) NOT NULL default 1,
+ PRIMARY KEY (idCliente)
+)
+
+
+create table direcciones(
+ idDireccion int(11) NOT NULL AUTO_INCREMENT,
+ idCliente int(11) NOT NULL,
+ direccion varchar(300) NOT NULL,
+ estado int(11) NOT NULL default 1,
+ PRIMARY KEY (idDireccion),
+KEY FK_clientes_direcciones (idCliente),
+CONSTRAINT FK_clientes_direcciones FOREIGN KEY (idCliente) REFERENCES clientes (idCliente)
+)
